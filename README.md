@@ -27,11 +27,22 @@ Achtung: `--conf spark.sql.extensions=org.apache.sedona.sql.SedonaSqlExtension` 
 spark-shell \
   --conf spark.serializer=org.apache.spark.serializer.KryoSerializer \
   --conf spark.kryo.registrator=org.apache.sedona.core.serde.SedonaKryoRegistrator \
-  --conf spark.sql.extensions=org.apache.sedona.sql.SedonaSqlExtensions \
+  --conf spark.sql.extensions=org.apache.iceberg.spark.extensions.IcebergSparkSessionExtensions,org.apache.sedona.sql.SedonaSqlExtensions \
   --conf spark.sql.catalog.local=org.apache.iceberg.spark.SparkCatalog \
   --conf spark.sql.catalog.local.type=hadoop \
   --conf spark.sql.catalog.local.warehouse=file:///Users/stefan/tmp/lakehouse \
   --packages org.apache.sedona:sedona-spark-shaded-3.5_2.12:1.7.1,org.datasyslab:geotools-wrapper:1.7.1-28.5,org.apache.iceberg:iceberg-spark-runtime-3.5_2.12:1.8.1
+
+
+spark-shell \
+  --conf spark.serializer=org.apache.spark.serializer.KryoSerializer \
+  --conf spark.kryo.registrator=org.apache.sedona.core.serde.SedonaKryoRegistrator \
+  --conf spark.sql.extensions=org.apache.iceberg.spark.extensions.IcebergSparkSessionExtensions,org.apache.sedona.sql.SedonaSqlExtensions \
+  --conf spark.sql.catalog.local=org.apache.iceberg.spark.SparkCatalog \
+  --conf spark.sql.catalog.local.type=hadoop \
+  --conf spark.sql.catalog.local.warehouse=file:///Users/stefan/tmp/lakehouse \
+  --packages org.apache.sedona:sedona-spark-shaded-3.5_2.12:1.7.1,org.datasyslab:geotools-wrapper:1.7.1-28.5 \
+  --jars /Users/stefan/Downloads/iceberg-spark-runtime-3.5_2.12-1.9.0-20250409.001855-44.jar
 ```
 
 ```
